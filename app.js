@@ -18,25 +18,32 @@ function matchCredentials(user, pwd) {
   return false;
 }
 app.get("/admin", (req, res) => {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
+  try {
     if (!username || !password) {
-        return res.status(400).send({
-            success: false,
-            message:"username/password is required"
-        })
+      return res.status(400).send({
+        success: false,
+        message: "username/password is required",
+      });
     }
 
-  const checkAuthorize = matchCredentials(username, password);
+    const checkAuthorize = matchCredentials(username, password);
 
-  if (!checkAuthorize) {
-    res.status(400).send({
+    if (!checkAuthorize) {
+      res.status(400).send({
+        success: false,
+        messsage: "you are not authorized to access this",
+      });
+    } else {
+      res.status(200).send({
+        success: true,
+        messsage: `welcome ${username}`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
       success: false,
-      messsage: "you are not authorized to access this",
-    });
-  } else {
-    res.status(200).send({
-      success: true,
-      messsage: `welcome ${username}`,
+      message: "internal server error",
     });
   }
 });
