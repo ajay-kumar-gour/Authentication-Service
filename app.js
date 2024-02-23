@@ -13,7 +13,10 @@ app.get("/", (req, res) => {
 
 const username = "admin";
 const password = "password";
-
+function matchCredentials(user, pwd) {
+  if (user === username && pwd === password) return true;
+  return false;
+}
 app.get("/admin", (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
