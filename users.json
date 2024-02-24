@@ -1,9 +1,5 @@
 [
   {
-    "username": "user1",
-    "password": "password1"
-  },
-  {
     "username": "user2",
     "password": "password2"
   },
@@ -36,19 +32,11 @@
     "password": "password9"
   },
   {
-    "username": "user10",
-    "password": "password10"
-  },
-  {
     "username": "ajay",
     "password": "ajay@123"
   },
   {
-    "username": "ajay",
-    "password": "ajay@123"
-  },
-  {
-    "username": "ajay",
-    "password": "ajay@123"
+    "username": "suru",
+    "password": "suru@123"
   }
 ]
