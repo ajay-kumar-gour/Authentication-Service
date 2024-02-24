@@ -78,6 +78,34 @@ app.get("/admin", matchCredentials, (req, res) => {
     message: `Welcome ${username}`,
   });
 });
+
+app.post("/user", (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res
+        .status(400)
+        .send({ success: false, message: "username/password is missing" });
+    }
+
+    // create a new suer objet
+
+    const newUser = { username, password };
+
+    users.push(newUser); // this is in uers array
+
+    //now update the new users array to the json file
+
+    fs.writeFileSync("users.json", JSON.stringify(users, null, 2));
+
+    res.status(201).send({
+      success: true,
+      message: "user created successfully",
+    });
+  } catch (error) {
+    res.status(500).send({ success: false, message: "Internal Server error" });
+  }
+});
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
 });
