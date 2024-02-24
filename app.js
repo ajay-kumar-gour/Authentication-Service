@@ -130,6 +130,41 @@ app.get("/users", (req, res) => {
     });
   }
 });
+
+app.delete("/user", (req, res) => {
+  const username = req.body.username;
+  console.log(username);
+  if (!username) {
+    return res.status(400).send({
+      success: false,
+      mesaage: "username is required",
+    });
+  }
+
+  const index = users.findIndex((user) => {
+    return user.username === username;
+  });
+
+  console.log("indexofuser", index);
+
+  if (index != -1) {
+    const updatedUsers = users.splice(index, 1);
+
+    fs.writeFileSync("users.json", JSON.stringify(users, null, 2));
+
+    return res.status(200).send({
+      success: true,
+      message: `user ${username} deleted successfully`,
+      totalUsers: users.length,
+      newUsersList: users,
+    });
+  } else {
+    res.status(400).send({
+      success: false,
+      message: "user not found",
+    });
+  }
+});
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
 });
