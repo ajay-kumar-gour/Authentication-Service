@@ -10,42 +10,38 @@ app.get("/", (req, res) => {
     message: "authentication service",
   });
 });
-
-const username = "admin";
-const password = "password";
-function matchCredentials(user, pwd) {
-  if (user === username && pwd === password) return true;
-  return false;
-}
-app.get("/admin", (req, res) => {
+function matchCredentials(req, res, next) {
+  const user = "admin";
+  const pwd = "pwd";
   const { username, password } = req.body;
-  try {
-    if (!username || !password) {
-      return res.status(400).send({
-        success: false,
-        message: "username/password is required",
-      });
-    }
 
-    const checkAuthorize = matchCredentials(username, password);
-
-    if (!checkAuthorize) {
-      res.status(400).send({
-        success: false,
-        messsage: "you are not authorized to access this",
-      });
-    } else {
-      res.status(200).send({
-        success: true,
-        messsage: `welcome ${username}`,
-      });
-    }
-  } catch (error) {
-    res.status(500).send({
+  if (!username || !password) {
+    return res.status(400).send({
       success: false,
-      message: "internal server error",
+      message: "username/passwaord is missing",
     });
   }
+  if (username !== user || password !== pwd) {
+      return res
+        .status(400)
+        .send({ success: false, message: "Invalid credentials" });
+    }
+    else {
+      next();
+    }
+ 
+}
+
+// function matchCredentials(user, pwd) {
+//   if (user === username && pwd === password) return true;
+//   return false;
+// }
+app.get("/admin", matchCredentials, (req, res) => {
+  const { username } = req.body;
+  res.status(200).send({
+    success: true,
+    message: `Welcome ${username}`,
+  });
 });
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
