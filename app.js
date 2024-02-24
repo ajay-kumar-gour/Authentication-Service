@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
     message: "authentication service",
   });
 });
-function matchCredentials(req, res, next) {
+const matchCredentials = (req, res, next) => {
   try {
     const user = "admin";
     const pwd = "pwd";
@@ -32,7 +32,7 @@ function matchCredentials(req, res, next) {
   } catch (error) {
     res.status(500).send({ success: false, message: "Internal Server Error" });
   }
-}
+};
 
 // function matchCredentials(user, pwd) {
 //   if (user === username && pwd === password) return true;
