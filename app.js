@@ -31,7 +31,7 @@ const matchCredentials = (req, res, next) => {
     if (!username || !password) {
       return res.status(400).send({
         success: false,
-        message: "username/passwaord is missing",
+        message: "username/password is missing",
       });
     }
     // if (username !== user || password !== pwd) {
@@ -43,16 +43,21 @@ const matchCredentials = (req, res, next) => {
     // }
 
     const user = users.find((user) => {
-      return user.username === username && user.password === password;
+      return user.username === username;
     });
-
+    console.log(user);
     if (!user) {
       return res
-        .status(404)
+        .status(401)
         .send({ success: false, message: "user does not exist" });
-    } else {
-      next();
     }
+    if (user.password !== password) {
+      return res
+        .status(401)
+        .send({ success: false, message: "Invalid password" });
+    }
+
+    next();
   } catch (error) {
     res.status(500).send({ success: false, message: "Internal Server Error" });
   }
