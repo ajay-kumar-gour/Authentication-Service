@@ -87,7 +87,15 @@ app.post("/user", (req, res) => {
         .status(400)
         .send({ success: false, message: "username/password is missing" });
     }
+    const existingUser = users.find((user) => {
+      return user.username === username;
+    });
 
+    if (existingUser) {
+      return res
+        .status(409)
+        .send({ success: false, message: "user already exist" });
+    }
     // create a new suer objet
 
     const newUser = { username, password };
