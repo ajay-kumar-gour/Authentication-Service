@@ -1,6 +1,18 @@
 const express = require("express");
-
+const fs = require("fs");
 const app = express();
+
+// console.log(fs);
+
+const userData = fs.readFileSync("users.json", "utf-8");
+
+console.log("userData", userData);
+console.log("TYPE OF userData", typeof userData);
+
+const users = JSON.parse(userData);
+
+console.log("users", users);
+console.log("type of users", typeof users);
 
 const PORT = 3000;
 app.use(express.json());
@@ -12,8 +24,8 @@ app.get("/", (req, res) => {
 });
 const matchCredentials = (req, res, next) => {
   try {
-    const user = "admin";
-    const pwd = "pwd";
+    // const user = "admin";
+    // const pwd = "pwd";
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -22,10 +34,22 @@ const matchCredentials = (req, res, next) => {
         message: "username/passwaord is missing",
       });
     }
-    if (username !== user || password !== pwd) {
+    // if (username !== user || password !== pwd) {
+    //   return res
+    //     .status(400)
+    //     .send({ success: false, message: "Invalid credentials" });
+    // } else {
+    //   next();
+    // }
+
+    const user = users.find((user) => {
+      return user.username === username && user.password === password;
+    });
+
+    if (!user) {
       return res
-        .status(400)
-        .send({ success: false, message: "Invalid credentials" });
+        .status(404)
+        .send({ success: false, message: "user does not exist" });
     } else {
       next();
     }
