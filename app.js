@@ -25,6 +25,25 @@ app.get("/", (req, res) => {
     message: "authentication service",
   });
 });
+
+const adminchecker = (req, res, next) => {
+  const { role } = req.body;
+  if (!role) {
+    return res.status(400).send({
+      success: false,
+      message: "role is required",
+    });
+  }
+
+  if (role === "admin") {
+    next();
+  } else {
+    res.status(400).send({
+      success: false,
+      message: "You are not authorized for this, check your role",
+    });
+  }
+};
 const matchCredentials = (req, res, next) => {
   try {
     // const user = "admin";
@@ -115,7 +134,7 @@ app.post("/user", (req, res) => {
   }
 });
 
-app.get("/users", (req, res) => {
+app.get("/users", adminchecker, (req, res) => {
   if (users.length == 0) {
     res.status(400).send({
       success: true,
