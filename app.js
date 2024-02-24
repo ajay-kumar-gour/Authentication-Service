@@ -11,25 +11,27 @@ app.get("/", (req, res) => {
   });
 });
 function matchCredentials(req, res, next) {
-  const user = "admin";
-  const pwd = "pwd";
-  const { username, password } = req.body;
+  try {
+    const user = "admin";
+    const pwd = "pwd";
+    const { username, password } = req.body;
 
-  if (!username || !password) {
-    return res.status(400).send({
-      success: false,
-      message: "username/passwaord is missing",
-    });
-  }
-  if (username !== user || password !== pwd) {
+    if (!username || !password) {
+      return res.status(400).send({
+        success: false,
+        message: "username/passwaord is missing",
+      });
+    }
+    if (username !== user || password !== pwd) {
       return res
         .status(400)
         .send({ success: false, message: "Invalid credentials" });
-    }
-    else {
+    } else {
       next();
     }
- 
+  } catch (error) {
+    res.status(500).send({ success: false, message: "Internal Server Error" });
+  }
 }
 
 // function matchCredentials(user, pwd) {
