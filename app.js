@@ -1,18 +1,21 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-
+let users = [];
 // console.log(fs);
+try {
+  let userData = fs.readFileSync("users.json", "utf-8");
 
-const userData = fs.readFileSync("users.json", "utf-8");
+  console.log("userData", userData);
+  console.log("TYPE OF userData", typeof userData);
 
-console.log("userData", userData);
-console.log("TYPE OF userData", typeof userData);
+  users = JSON.parse(userData);
 
-const users = JSON.parse(userData);
-
-console.log("users", users);
-console.log("type of users", typeof users);
+  console.log("users", users);
+  console.log("type of users", typeof users);
+} catch (error) {
+  console.log("error reading users.json file", error);
+}
 
 const PORT = 3000;
 app.use(express.json());
@@ -60,6 +63,7 @@ const matchCredentials = (req, res, next) => {
     next();
   } catch (error) {
     res.status(500).send({ success: false, message: "Internal Server Error" });
+    console.log(error);
   }
 };
 
