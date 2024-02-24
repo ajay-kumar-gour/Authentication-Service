@@ -116,12 +116,19 @@ app.post("/user", (req, res) => {
 });
 
 app.get("/users", (req, res) => {
-  res.status(200).send({
-    success: true,
-    mesaage: "users fetched",
-    totatUsers: users.length,
-    users,
-  });
+  if (users.length == 0) {
+    res.status(400).send({
+      success: true,
+      message: "no users found",
+    });
+  } else {
+    res.status(200).send({
+      success: true,
+      mesaage: "users fetched",
+      totatUsers: users.length,
+      users,
+    });
+  }
 });
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
