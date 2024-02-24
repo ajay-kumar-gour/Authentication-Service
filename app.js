@@ -165,6 +165,43 @@ app.delete("/user", (req, res) => {
     });
   }
 });
+
+app.put("/user", (req, res) => {
+  const { username, oldPassword, newPassword } = req.body;
+  if (!username || !oldPassword || !newPassword) {
+    return res.status(400).send({
+      succcess: false,
+      message: "username/oldpassword/newpassowrd is required",
+    });
+  }
+
+  const existingUser = users.find((user) => {
+    return user.username === username;
+  });
+
+  if (!existingUser) {
+    return res.status(400).send({
+      succes: false,
+      mesaage: "user does not exist",
+    });
+  }
+  if (existingUser.password != oldPassword) {
+    return res.status(400).send({
+      succes: false,
+      message: "old password does not matched",
+    });
+  }
+  existingUser.password = newPassword;
+
+  fs.writeFileSync("users.json", JSON.stringify(users, null, 2));
+
+  res.status(200).send({
+    success: true,
+    message: `user ${username} passwords were updated successfully`,
+    userNewDetail: existingUser,
+    users,
+  });
+});
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
 });
