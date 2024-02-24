@@ -114,6 +114,15 @@ app.post("/user", (req, res) => {
     res.status(500).send({ success: false, message: "Internal Server error" });
   }
 });
+
+app.get("/users", (req, res) => {
+  res.status(200).send({
+    success: true,
+    mesaage: "users fetched",
+    totatUsers: users.length,
+    users,
+  });
+});
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
 });
