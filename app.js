@@ -31,7 +31,7 @@ const adminchecker = (req, res, next) => {
   if (!role) {
     return res.status(400).send({
       success: false,
-      message: "role is required",
+      message: "role is missing",
     });
   }
 
