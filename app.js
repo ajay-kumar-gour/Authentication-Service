@@ -53,7 +53,7 @@ const matchCredentials = (req, res, next) => {
     if (!username || !password) {
       return res.status(400).send({
         success: false,
-        message: "username/password is missing",
+        message: "username/password is required",
       });
     }
     // if (username !== user || password !== pwd) {
