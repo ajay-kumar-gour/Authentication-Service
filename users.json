@@ -24,6 +24,10 @@
     "password": "password8"
   },
   {
+    "username": "user8",
+    "password": "password8"
+  },
+  {
     "username": "user9",
     "password": "passvvword9"
   },
@@ -35,8 +39,8 @@
     "username": "suru",
     "password": "suru@123"
   },
-   {
-     "username": "suru suru",
-     "password": "suru@123"
-   }
+  {
+    "username": "suru suru",
+    "password": "suru@123"
+  }
 ]
