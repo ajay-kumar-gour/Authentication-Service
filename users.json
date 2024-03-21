@@ -1,54 +1,72 @@
 [
   {
     "username": "user2",
-    "password": "password2"
+    "password": "password2",
+    "email": "user2@example.com",
+    "age": 25,
+    "country": "USA"
   },
   {
     "username": "user4",
-    "password": "password4"
+    "password": "password4",
+    "email": "user4@example.com",
+    "age": 30,
+    "country": "Canada"
   },
   {
     "username": "user5",
-    "password": "password5"
+    "password": "password5",
+    "email": "user5@example.com",
+    "age": 22,
+    "country": "UK"
   },
   {
     "username": "user6",
-    "password": "password6"
+    "password": "password6",
+    "email": "user6@example.com",
+    "age": 28,
+    "country": "Australia"
   },
   {
     "username": "user7",
-    "password": "password7"
+    "password": "password7",
+    "email": "user7@example.com",
+    "age": 35,
+    "country": "Germany"
   },
   {
     "username": "user8",
-    "password": "password8"
-  },
-  {
-    "username": "user8",
-    "password": "password8"
+    "password": "password8",
+    "email": "user8@example.com",
+    "age": 29,
+    "country": "France"
   },
   {
     "username": "user9",
-    "password": "passvvword9"
+    "password": "passvvword9",
+    "email": "user9@example.com",
+    "age": 27,
+    "country": "Spain"
   },
   {
     "username": "ajay gour",
-    "password": "newPassword"
-  },
-  {
-    "username": "ajay gour",
-    "password": "newPassword"
-  },
-  {
-    "username": "suru",
-    "password": "suru@123"
+    "password": "newPassword",
+    "email": "ajay@example.com",
+    "age": 32,
+    "country": "India"
   },
   {
     "username": "suru",
-    "password": "suru@123"
+    "password": "suru@123",
+    "email": "suru@example.com",
+    "age": 40,
+    "country": "Japan"
   },
   {
     "username": "suru suru",
-    "password": "suru@123"
+    "password": "suru@123",
+    "email": "surusuru@example.com",
+    "age": 38,
+    "country": "Brazil"
   }
 ]
