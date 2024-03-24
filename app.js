@@ -119,7 +119,7 @@ app.post("/user", (req, res) => {
   }
 });
 
-app.get("/users", adminchecker, (req, res) => {
+app.get("/users", (req, res) => {
   if (users.length === 0) {
     res.status(400).send({
       success: true,
