@@ -67,7 +67,7 @@ const matchCredentials = (req, res, next) => {
     if (user.password !== password) {
       return res
         .status(401)
-        .send({ success: false, message: "Invalid password" });
+        .send({ success: false, message: "Invalid password, please check again" });
     }
 
     next();
