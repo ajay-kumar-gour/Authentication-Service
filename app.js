@@ -14,7 +14,7 @@ try {
   console.log("users", users);
   console.log("type of users", typeof users);
 } catch (error) {
-  console.log("error reading users.json file", error);
+  console.log("error reading users file", error);
 }
 
 const PORT = 3000;
