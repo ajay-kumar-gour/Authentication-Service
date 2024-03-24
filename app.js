@@ -17,7 +17,7 @@ try {
   console.log("error reading users file", error);
 }
 
-const PORT = 3000;
+const PORT = 5000;
 app.use(express.json());
 app.get("/", (req, res) => {
   res.status(200).send({
