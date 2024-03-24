@@ -61,7 +61,7 @@ const matchCredentials = (req, res, next) => {
     if (!user) {
       return res
         .status(401)
-        .send({ success: false, message: "user does not exist" });
+        .send({ success: false, message: "user not found" });
     }
 
     if (user.password !== password) {
