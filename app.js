@@ -40,7 +40,7 @@ const adminchecker = (req, res, next) => {
   } else {
     res.status(400).send({
       success: false,
-      message: "Unauthorized for this, check your role",
+      message: "Unauthorized for this, please check your role",
     });
   }
 };
