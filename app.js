@@ -52,7 +52,7 @@ const matchCredentials = (req, res, next) => {
     if (!username || !password) {
       return res.status(400).send({
         success: false,
-        message: "username/password is required",
+        message: "username/password is missing and is required",
       });
     }
 
