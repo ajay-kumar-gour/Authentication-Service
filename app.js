@@ -186,6 +186,7 @@ app.put("/user", (req, res) => {
   if (existingUser.password !== oldPassword) {
     return res.status(400).send({
       success: false,
+      
       message: "old password does not match",
     });
   }
