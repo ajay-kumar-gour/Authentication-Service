@@ -191,7 +191,7 @@ app.put("/user", (req, res) => {
     });
   }
 
-  existingUser.password = newPassword;
+  existingUser.password =  newPassword;
 
   fs.writeFileSync("users.json", JSON.stringify(users, null, 2));
 
