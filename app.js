@@ -205,5 +205,5 @@ app.put("/user", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`server is listening on ${PORT}`);
+  console.log(`server is up and  listening on ${PORT}`);
 });
