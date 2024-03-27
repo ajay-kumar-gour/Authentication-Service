@@ -177,6 +177,8 @@ app.put("/user", (req, res) => {
   const existingUser = users.find((user) => user.username === username);
 
   if (!existingUser) {
+
+    
     return res.status(400).send({
       success: false,
       message: "user does not exist",
