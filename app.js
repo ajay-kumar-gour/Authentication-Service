@@ -178,7 +178,7 @@ app.put("/user", (req, res) => {
 
   if (!existingUser) {
 
-    
+
     return res.status(400).send({
       success: false,
       message: "user does not exist",
@@ -207,5 +207,5 @@ app.put("/user", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`server is up and  listening on ${PORT}`);
+  console.log(`server is up and  running on ${PORT}`);
 });
