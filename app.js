@@ -181,7 +181,7 @@ app.put("/user", (req, res) => {
 
     return res.status(400).send({
       success: false,
-      message: "user does not exist",
+      message: "user not found",
     });
   }
 
