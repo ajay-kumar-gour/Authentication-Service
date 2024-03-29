@@ -128,7 +128,7 @@ app.get("/users", (req, res) => {
   } else {
     res.status(200).send({
       success: true,
-      message: "users fetched",
+      message: "users data fetched",
       totalUsers: users.length,
       users,
     });
