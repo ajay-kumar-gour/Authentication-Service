@@ -123,7 +123,7 @@ app.get("/users", (req, res) => {
   if (users.length === 0) {
     res.status(400).send({
       success: true,
-      message: "no users found",
+      message: "no users found, pleasw check",
     });
   } else {
     res.status(200).send({
