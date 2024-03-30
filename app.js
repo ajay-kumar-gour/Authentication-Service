@@ -115,7 +115,7 @@ app.post("/user", (req, res) => {
       message: "user created successfully",
     });
   } catch (error) {
-    res.status(500).send({ success: false, message: "Internal Server error",error:error.message });
+    res.status(500).send({ success: false  , message: "Internal Server error",error:error.message });
   }
 });
 
